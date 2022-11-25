@@ -1,6 +1,6 @@
 yum install epel-release -y
 yum update
-yum install ocserv gnutls-utils
+yum install ocserv gnutls-utils -y
 mkdir /etc/ocserv/cert
 cd /etc/ocserv/cert/
 

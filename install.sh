@@ -36,6 +36,7 @@ cp ca-cert.pem server-key.pem server-cert.pem /etc/ocserv/ssl/
 
 cd /etc/ocserv/
 wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf
+touch /etc/ocserv/passwd
 
 yum install iptables-services -y > /dev/null &
 wait
@@ -55,3 +56,4 @@ echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &
 systemctl restart ocserv
 systemctl enable ocserv
 echo "Finished ! :) Have Fun "
+ocpasswd -c /etc/ocserv/passwd -g default hamed

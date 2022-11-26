@@ -3,6 +3,7 @@ yum update -y > /dev/null &
 yum install ocserv gnutls-utils -y > /dev/null &
 mkdir /etc/ocserv/cert
 cd /etc/ocserv/cert/
+wait
 
 cat <<EOT >> ca.tmpl
 cn = "VPN CA"
@@ -17,6 +18,7 @@ EOT
 
 certtool --generate-privkey --outfile ca-key.pem &
 certtool --generate-self-signed --load-privkey ca-key.pem --template ca.tmpl --outfile ca-cert.pem &
+wait
 
 cat <<EOT >> /etc/ocserv/server.tmpl 
 cn = "My server"
@@ -30,13 +32,16 @@ EOT
 
 certtool --generate-privkey --outfile server-key.pem &
 certtool --generate-certificate --load-privkey server-key.pem --load-ca-certificate ca-cert.pem --load-ca-privkey ca-key.pem --template /etc/ocserv/server.tmpl --outfile server-cert.pem &
+wait
 
 mkdir /etc/ocserv/ssl/
 cp ca-cert.pem server-key.pem server-cert.pem /etc/ocserv/ssl/
+wait 
 
 cd /etc/ocserv/
 wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf &
 touch /etc/ocserv/passwd &
+wait
 
 yum install iptables-services -y > /dev/null &
 wait
@@ -50,7 +55,7 @@ iptables -I INPUT -p tcp --dport 4431 -j ACCEPT &
 iptables -I INPUT -p udp --dport 4431 -j ACCEPT &
 iptables -I INPUT -p udp --dport 53 -j ACCEPT &
 iptables -t nat -A POSTROUTING -j MASQUERADE &
-
+wait
 
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &
 systemctl restart ocserv &

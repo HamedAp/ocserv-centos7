@@ -60,6 +60,8 @@ iptables -t nat -A POSTROUTING -j MASQUERADE &
 wait
 
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &
+
+systemctl restart iptables &
 systemctl restart ocserv &
 systemctl enable ocserv &
 echo "Finished ! :) Have Fun "

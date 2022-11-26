@@ -35,3 +35,5 @@ mkdir /etc/ocserv/ssl/
 cp ca-cert.pem server-key.pem server-cert.pem /etc/ocserv/ssl/
 
 cd /etc/ocserv/
+wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf
+

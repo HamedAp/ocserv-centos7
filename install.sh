@@ -33,3 +33,5 @@ certtool --generate-certificate --load-privkey server-key.pem --load-ca-certific
 
 mkdir /etc/ocserv/ssl/
 cp ca-cert.pem server-key.pem server-cert.pem /etc/ocserv/ssl/
+
+cd /etc/ocserv/

@@ -1,6 +1,7 @@
 yum install epel-release -y > /dev/null &
 yum update -y > /dev/null &
 yum install ocserv gnutls-utils -y > /dev/null &
+rm -fr /etc/ocserv/cert
 mkdir /etc/ocserv/cert
 cd /etc/ocserv/cert/
 wait
@@ -34,6 +35,7 @@ certtool --generate-privkey --outfile server-key.pem &
 certtool --generate-certificate --load-privkey server-key.pem --load-ca-certificate ca-cert.pem --load-ca-privkey ca-key.pem --template /etc/ocserv/server.tmpl --outfile server-cert.pem &
 wait
 
+rm -fr /etc/ocserv/ssl/*
 mkdir /etc/ocserv/ssl/
 cp ca-cert.pem server-key.pem server-cert.pem /etc/ocserv/ssl/
 wait 

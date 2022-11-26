@@ -1,6 +1,6 @@
-yum install epel-release -y
-yum update -y
-yum install ocserv gnutls-utils -y
+yum install epel-release -y > /dev/null &
+yum update -y > /dev/null &
+yum install ocserv gnutls-utils -y > /dev/null &
 mkdir /etc/ocserv/cert
 cd /etc/ocserv/cert/
 
@@ -52,6 +52,6 @@ iptables -t nat -A POSTROUTING -j MASQUERADE &
 
 
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &
-systemctl start ocserv
+systemctl restart ocserv
 systemctl enable ocserv
 echo "Finished ! :) Have Fun "

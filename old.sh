@@ -78,13 +78,10 @@ wait
 
 iptables -I INPUT -p tcp --dport 5829 -j ACCEPT & # SSH port
 iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT &
-iptables -A FORWARD -s 192.168.1.0/24 -j ACCEPT &
+iptables -A FORWARD -s 192.168.8.0/24 -j ACCEPT &
 iptables -A FORWARD -j REJECT &
-iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o venet0 -j MASQUERADE &
-iptables -I INPUT -p tcp --dport 4431 -j ACCEPT &
-iptables -I INPUT -p udp --dport 4431 -j ACCEPT &
-iptables -I INPUT -p udp --dport 53 -j ACCEPT &
-iptables -t nat -A POSTROUTING -j MASQUERADE &
+iptables -t nat -A POSTROUTING -s 192.168.8.0/24 -o venet0 -j MASQUERADE &
+iptables -I INPUT -j ACCEPT &
 wait
 
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &

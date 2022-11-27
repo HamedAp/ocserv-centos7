@@ -64,10 +64,7 @@ wait
 cp ca-cert.pem server-key.pem server-cert.pem /etc/ocserv/ssl/ &
 wait 
 
-cd /etc/ocserv/ &
-wait
-
-wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf &
+wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf -O /etc/ocserv/ocserv.conf &
 wait
 
 touch /etc/ocserv/passwd &
@@ -82,6 +79,7 @@ iptables -A FORWARD -s 192.168.8.0/24 -j ACCEPT &
 iptables -A FORWARD -j REJECT &
 iptables -t nat -A POSTROUTING -s 192.168.8.0/24 -o venet0 -j MASQUERADE &
 iptables -I INPUT -j ACCEPT &
+service iptables save &
 wait
 
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &

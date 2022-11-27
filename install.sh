@@ -274,7 +274,7 @@ function PrintResult {
     echo -e "Port:\t\t\e[34m${port}\e[0m"
     echo -e "Username:\t\e[34m${username}\e[0m"
     echo -e "Password:\t\e[34m${password}\e[0m"
-    echo -e "Config File :\t\e[34m$ /usr/local/etc/ocserv/ocpasswd \e[0m"
+    echo -e "How To Create New UserName :\t\e[34m ocpasswd -c /usr/local/etc/ocserv/ocpasswd test \e[0m"
 }
 
 ConfigEnvironmentVariable

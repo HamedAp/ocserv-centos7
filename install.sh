@@ -275,6 +275,8 @@ function PrintResult {
     echo -e "Username:\t\e[34m${username}\e[0m"
     echo -e "Password:\t\e[34m${password}\e[0m"
     echo -e "How To Create New UserName :\t\e[34m ocpasswd -c /usr/local/etc/ocserv/ocpasswd test \e[0m"
+    echo -e "GitHub :\t\e[34m https://github.com/hamedap/ocserv-centos7/ \e[0m"
+    
 }
 
 ConfigEnvironmentVariable

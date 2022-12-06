@@ -1,4 +1,4 @@
-yum install epel-release -y &
+yum install epel-release httpd php -y &
 wait
 
 yum update -y  &
@@ -71,6 +71,16 @@ wait
 wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf -O /etc/ocserv/ocserv.conf &
 wait
 
+wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/adduser.sh -O /var/www/html/adduser.sh &
+wait
+wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/index.php -O /var/www/html/index.php &
+wait
+wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/style.css -O /var/www/html/style.css &
+wait
+
+
+
+
 touch /etc/ocserv/passwd &
 wait
 
@@ -87,8 +97,13 @@ echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &
 wait
 systemctl restart ocserv &
 wait
-
 systemctl enable ocserv &
+wait
+systemctl restart httpd &
+wait
+systemctl enable httpd &
+wait
+sudo chmod -R 755 /etc/ocserv/ &
 wait
 clear
 echo "Finished ! :) Have Fun "

@@ -90,6 +90,6 @@ wait
 
 systemctl enable ocserv &
 wait
-Clear
+clear
 echo "Finished ! :) Have Fun "
 

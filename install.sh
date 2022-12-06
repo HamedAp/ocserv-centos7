@@ -32,6 +32,8 @@ rm -fr ca-key.pem ca-cert.pem &
 wait
 
 certtool --generate-privkey --outfile ca-key.pem &
+
+
 certtool --generate-self-signed --load-privkey ca-key.pem --template /etc/ocserv/cert/ca.tmpl --outfile ca-cert.pem &
 wait
 
@@ -52,6 +54,8 @@ rm -fr server-key.pem server-key.pem &
 wait
 
 certtool --generate-privkey --outfile server-key.pem &
+
+
 certtool --generate-certificate --load-privkey server-key.pem --load-ca-certificate ca-cert.pem --load-ca-privkey ca-key.pem --template /etc/ocserv/server.tmpl --outfile server-cert.pem &
 wait
 

@@ -32,7 +32,7 @@ rm -fr ca-key.pem ca-cert.pem &
 wait
 
 certtool --generate-privkey --outfile ca-key.pem &
-
+wait
 
 certtool --generate-self-signed --load-privkey ca-key.pem --template /etc/ocserv/cert/ca.tmpl --outfile ca-cert.pem &
 wait
@@ -54,7 +54,7 @@ rm -fr server-key.pem server-key.pem &
 wait
 
 certtool --generate-privkey --outfile server-key.pem &
-
+wait
 
 certtool --generate-certificate --load-privkey server-key.pem --load-ca-certificate ca-cert.pem --load-ca-privkey ca-key.pem --template /etc/ocserv/server.tmpl --outfile server-cert.pem &
 wait
@@ -74,18 +74,22 @@ wait
 touch /etc/ocserv/passwd &
 wait
 
-iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -s 192.168.1.0/24 -j ACCEPT
-iptables -A FORWARD -j REJECT
-iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o venet0 -j MASQUERADE
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT &
+wait
+iptables -A FORWARD -s 192.168.1.0/24 -j ACCEPT &
+wait
+iptables -A FORWARD -j REJECT &
+wait
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o venet0 -j MASQUERADE &
+wait
 
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &
-
+wait
 systemctl restart ocserv &
 wait
 
 systemctl enable ocserv &
 wait
-
+Clear
 echo "Finished ! :) Have Fun "
 

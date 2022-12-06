@@ -1,0 +1,42 @@
+table, th, td {
+border:1px solid white;
+color:white;
+font-family: tahoma;
+font-size: 12px;
+}
+    input{
+    background: rgba(23,96,176,1.00);
+    box-shadow: 0 5px 20px 0 white;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 170px;
+    height: 43px;
+    text-align: center;
+    padding: 6px;
+    margin: 6px;
+        font-size: 22px;
+    text-align: center;
+    color: white;
+}
+      
+      .center {
+        text-align: center;
+    padding: 10px;
+      }
+       	button {
+            background:rgba(85,27,127,1.00);
+		    box-shadow: 0 5px 50px 0 Blue;
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 170px;
+            height: 43px;            
+            text-align: center;
+            padding: 6px;
+            margin: 6px;
+		}
+		button:hover {
+            box-shadow: 0 5px 50px 0 red;
+            background-color: rgba(116,68,127,1.00);
+            color: white;
+            border-radius: 10px;
+		}

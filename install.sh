@@ -70,12 +70,12 @@ wait
 touch /etc/ocserv/passwd &
 wait
 
-#iptables
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -s 192.168.1.0/24 -j ACCEPT
+iptables -A FORWARD -j REJECT
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o venet0 -j MASQUERADE
 
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &
-
-systemctl restart iptables &
-wait
 
 systemctl restart ocserv &
 wait

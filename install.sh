@@ -90,7 +90,7 @@ iptables -A FORWARD -s 192.168.1.0/24 -j ACCEPT &
 wait
 iptables -A FORWARD -j REJECT &
 wait
-iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o venet0:0 -j MASQUERADE &
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o venet0 -j MASQUERADE &
 wait
 
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf &

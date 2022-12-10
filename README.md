@@ -1,5 +1,5 @@
 # ocserv-centos7
- Panel added .
+ Panel have permission problem . ( fix soon )
 
 
 ````

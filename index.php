@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="/style.css" type="text/css">
 </head>
 
-<body style="background-color:rgba(0,0,0,1.00)">
+<body style="background-color:rgba(0,0,0,1.00);color:white">
 <h1 style="font-size:25px;text-align:center;color:yellow;">Cisco Panel By Hamed Ap</h1>
 <div class="center">
 <hr>

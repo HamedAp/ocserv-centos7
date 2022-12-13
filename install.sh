@@ -1,11 +1,11 @@
-yum install epel-release httpd php -y &
+yum install epel-release -y &
 wait
 
 yum update -y  &
 wait
 
 
-yum install ocserv gnutls-utils -y &
+yum install httpd php ocserv gnutls-utils -y &
 wait
 
 rm -fr /etc/ocserv/cert &

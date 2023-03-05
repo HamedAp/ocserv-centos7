@@ -71,15 +71,8 @@ wait
 wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf -O /etc/ocserv/ocserv.conf &
 wait
 
-wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/adduser.sh -O /var/www/html/adduser.sh &
+wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/addcisco.sh -O /root/adduser.sh &
 wait
-wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/index.php -O /var/www/html/index.php &
-wait
-wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/style.css -O /var/www/html/style.css &
-wait
-
-
-
 
 touch /etc/ocserv/passwd &
 wait

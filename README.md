@@ -7,3 +7,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/HamedAp/ocserv-centos7/master/
 ````
 
 Change ````venet0```` to your network interface in ( install.sh - Line 93) 
+
+
+# Add user
+
+````
+ocpasswd -c /etc/ocserv/passwd -g default test
+````

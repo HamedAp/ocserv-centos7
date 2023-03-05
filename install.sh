@@ -68,10 +68,10 @@ wait
 cp ca-cert.pem server-key.pem server-cert.pem /etc/ocserv/ssl/ &
 wait 
 
-wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf -O /etc/ocserv/ocserv.conf &
+wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/ocserv.conf -O /etc/ocserv/ocserv.conf -4 &
 wait
 
-wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/addcisco.sh -O /root/adduser.sh &
+wget -N https://raw.githubusercontent.com/hamedap/ocserv-centos7/main/addcisco.sh -O /root/adduser.sh -4 &
 wait
 
 touch /etc/ocserv/passwd &
